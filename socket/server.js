@@ -1,3 +1,5 @@
+import config from '../config/config'
+
 module.exports = {
   init(server) {
     const io = require('socket.io')(server)
@@ -11,7 +13,7 @@ module.exports = {
       // const clientIP = ipMatch ? ipMatch[0] : '127.0.0.1'
 
       socket.on('get-socket-id', () => {
-        const dashboardUrl = 'http://10.7.248.186:4000/open_dashboard?dashboard_page_id=' + socket.id.substr(2, socket.id.length - 2)
+        const dashboardUrl = `${config.host}:${config.port}/open_dashboard?dashboard_page_id=${socket.id.substr(2, socket.id.length - 2)}`
         io.to(socket.id).emit('dashboard-page-id', dashboardUrl)
       })
 
