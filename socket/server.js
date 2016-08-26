@@ -9,14 +9,13 @@ module.exports = {
     this.socketMapping = socketMapping
 
     io.on('connection', socket => {
-      // const ipMatch = /(?:\d{1,3}\.){3}\d{1,3}$/.exec(socket.handshake.address)
-      // const clientIP = ipMatch ? ipMatch[0] : '127.0.0.1'
-
+      // for create qrcode
       socket.on('get-socket-id', () => {
         const dashboardUrl = `${config.host}:${config.port}/open_dashboard?dashboard_page_id=${socket.id.substr(2, socket.id.length - 2)}`
         io.to(socket.id).emit('dashboard-page-id', dashboardUrl)
       })
 
+      // for open dashboard page
       socket.on('open-dashboard', (data) => {
         const socketKey = '/#' + data.dashboard_page_id
         if (!socketMapping[data.mobile_ip]) {

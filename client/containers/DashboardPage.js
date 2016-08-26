@@ -2,6 +2,9 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as DashboardActions from '../actions/dashboard'
 
+import Header from '../components/Header'
+import RecordList from '../components/RecordList'
+
 class DashboardPage extends React.Component {
   componentDidMount() {
     const { socket } = this.props
@@ -16,9 +19,11 @@ class DashboardPage extends React.Component {
   }
 
   render() {
+    const { dashboard, actions } = this.props
     return (
       <div>
-        Dashboard page!
+        <Header dashboard={dashboard} actions={actions} />
+        <RecordList dashboard={dashboard} actions={actions} />
       </div>
     )
   }
