@@ -6,8 +6,8 @@
     "start": "./node_modules/.bin/nodemon bin/run --ignore dist --ignore client",
     "koa": "./node_modules/.bin/runkoa bin/www",
     "pm2": "pm2 start bin/run ",
-    "dev": "webpack --watch --devtool source-map --progress --colors",
-    "build": "webpack -p",
+    "dev": "webpack -d -w -c --progress",
+    "build": "NODE_ENV=production webpack --config ./webpack.config.prod.js -p --progress",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
