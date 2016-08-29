@@ -1,6 +1,7 @@
 import { handleActions } from 'redux-actions'
 
 const initialState = {
+  mobile_ip: '',
   recording: false,
   records: [
     {
@@ -19,7 +20,18 @@ export default handleActions({
   'stop record' (state, action) {
     return Object.assign({}, state, { recording: false })
   },
+  'add req' (state, action) {
+    const newReq = {
+      url: action.payload.req_url,
+      method: action.payload.req_method,
+      req: action.payload.req_data
+    }
+    return Object.assign({}, state, { records: [newReq, ...state.records] })
+  },
   'clear all' (state, action) {
     return Object.assign({}, state, { records: [] })
+  },
+  'add mobile ip' (state, action) {
+    return Object.assign({}, state, { mobile_ip: action.payload })
   }
 }, initialState)

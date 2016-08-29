@@ -1,20 +1,18 @@
-import { browserHistory } from 'react-router'
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
-import * as SocketActions from '../actions/socket'
-
-class IndexPage extends React.Component {
+class StartPage extends React.Component {
   componentDidMount() {
-    const { socket } = this.props
+    const { socket, dashboard, actions } = this.props
 
     socket.on('go-dashboard', data => {
-      browserHistory.push('/dashboard?mobile_ip=' + data)
+      console.log('go-dashboard', data);
+      actions.addMobileIP(data)
+      console.log(dashboard.mobile_ip);
     })
 
     socket.on('dashboard-page-id', data => {
       if (!document.getElementById('qrcode')) {
         return
       }
+      console.log(data)
       document.getElementById('qrcode').innerHTML = ''
       new QRCode(document.getElementById('qrcode'), {
         text: data,
@@ -39,19 +37,4 @@ class IndexPage extends React.Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    socket: state.socket
-  }
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(SocketActions, dispatch)
-  }
-}
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(IndexPage)
+export default StartPage

@@ -12,7 +12,8 @@ class Header extends React.Component {
   }
 
   render() {
-    const recordBtn = this.props.dashboard.recording ? (
+    const { dashboard } = this.props
+    const recordBtn = dashboard.recording ? (
       <a className="button is-danger" onClick={this.handleStopRecord}>停止抓包</a>
     ) : (
       <a className="button is-success" onClick={this.handleStartRecord}>开始抓包</a>
@@ -31,6 +32,9 @@ class Header extends React.Component {
               <p className="control">
                 <input className="input" type="text" placeholder="搜索..." />
               </p>
+            </div>
+            <div className="column">
+              <p>当前手机IP：{dashboard.mobile_ip}</p>
             </div>
           </div>
         </div>
