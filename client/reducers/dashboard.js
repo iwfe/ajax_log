@@ -1,32 +1,45 @@
 import { handleActions } from 'redux-actions'
+import { findIndex } from 'lodash'
 
 const initialState = {
-  mobile_ip: '',
+  mobile_ip: '123',
   recording: false,
+  currentRecordIndex: 0,
   records: [
     {
+      id: 123,
       url: '/test/123',
       method: 'GET',
-      req: { a: 1 },
-      res: { b: 2 }
+      status: 200,
+      req_data: { a: 1 },
+      res_data: { b: 2 }
+    },
+    {
+      id: 456,
+      url: '/test/123/eee',
+      method: 'GET',
+      status: 200,
+      req_data: { a: 1 },
+      res_data: { b: 2 }
     }
   ]
 }
 
 export default handleActions({
-  'start record' (state, action) {
-    return Object.assign({}, state, { recording: true })
-  },
-  'stop record' (state, action) {
-    return Object.assign({}, state, { recording: false })
-  },
   'add req' (state, action) {
-    const newReq = {
-      url: action.payload.req_url,
-      method: action.payload.req_method,
-      req: action.payload.req_data
-    }
-    return Object.assign({}, state, { records: [newReq, ...state.records] })
+    return Object.assign({}, state, { records: [action.payload, ...state.records] })
+  },
+  'add res' (state, action) {
+    const index = findIndex(state.records, { id: action.payload.id })
+    const newItem = Object.assign({}, state.records[index], action.payload)
+    return Object.assign({}, state, { records: [
+      ...state.records.slice(0, index),
+      newItem,
+      ...state.records.slice(index + 1)
+    ] })
+  },
+  'change current record' (state, action) {
+    return Object.assign({}, state, { currentRecordIndex: action.payload })
   },
   'clear all' (state, action) {
     return Object.assign({}, state, { records: [] })

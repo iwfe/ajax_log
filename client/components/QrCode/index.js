@@ -1,11 +1,9 @@
-class StartPage extends React.Component {
+class QrCode extends React.Component {
   componentDidMount() {
     const { socket, dashboard, actions } = this.props
 
     socket.on('go-dashboard', data => {
-      console.log('go-dashboard', data);
       actions.addMobileIP(data)
-      console.log(dashboard.mobile_ip);
     })
 
     socket.on('dashboard-page-id', data => {
@@ -37,4 +35,4 @@ class StartPage extends React.Component {
   }
 }
 
-export default StartPage
+export default QrCode

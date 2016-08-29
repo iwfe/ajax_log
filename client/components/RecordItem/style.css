@@ -1,0 +1,18 @@
+.item_wrap {
+  display: flex;
+  border-bottom: 1px solid #eee;
+}
+.item_wrap.active {
+  background-color: #f5f7fa;
+}
+.item_wrap div {
+  flex: 1;
+  padding: 10px 5px;
+  overflow: auto;
+}
+.item_wrap span {
+  width: 80px;
+  padding: 10px 5px;
+  text-align: center;
+  border-left: 1px solid #eee;
+}

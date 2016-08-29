@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import * as SocketActions from '../actions/socket'
 import * as DashboardActions from '../actions/dashboard'
 
-import StartPage from '../components/StartPage'
+import QrCode from '../components/QrCode'
 import Dashboard from '../components/Dashboard'
 
 class App extends React.Component {
@@ -13,7 +13,7 @@ class App extends React.Component {
     const page = dashboard.mobile_ip ? (
       <Dashboard socket={socket} dashboard={dashboard} actions={actions} />
     ) : (
-      <StartPage socket={socket} dashboard={dashboard} actions={actions} />
+      <QrCode socket={socket} dashboard={dashboard} actions={actions} />
     )
     return page
   }

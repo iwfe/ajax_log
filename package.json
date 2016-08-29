@@ -11,7 +11,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "bulma": "^0.1.2",
+    "classnames": "^2.2.5",
     "co": "^4.6.0",
     "debug": "^2.2.0",
     "ejs": "~2.3.3",
@@ -26,6 +26,7 @@
     "koa-socket": "^4.4.0",
     "koa-static": "^2.0.0",
     "koa-views": "^5.0.1",
+    "purecss": "^0.6.0",
     "react": "^15.3.1",
     "react-dom": "^15.3.1",
     "react-redux": "^4.4.5",

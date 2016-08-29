@@ -1,0 +1,38 @@
+.head {
+  background-color: #eee;
+  border-bottom: 1px solid #d3d6db;
+  color: #222324;
+  font-size: 18px;
+  font-weight: 300;
+}
+
+.control {
+  padding: 6px 10px;
+}
+.control button {
+  width: 100px;
+  height: 30px;
+  font-size: .75em;
+}
+.control input {
+  float: right;
+  width: calc(100% - 120px);
+  height: 30px;
+  padding: 0 5px;
+  font-size: .75em;
+}
+
+.row_title {
+  display: flex;
+  border-top: 1px solid #ccc;
+}
+.row_title div {
+  flex: 1;
+  padding: 5px;
+}
+.row_title span {
+  width: 80px;
+  padding: 5px;
+  text-align: center;
+  border-left: 1px solid #ccc;
+}

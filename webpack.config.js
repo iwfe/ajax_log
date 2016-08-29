@@ -4,8 +4,11 @@ var WebpackNotifierPlugin = require('webpack-notifier')
 
 module.exports = {
   entry: [
-    './client/index.js',
-    './node_modules/bulma/css/bulma.css'
+    'purecss',
+    './client/vendor/jquery.jsonview.min.css',
+    './client/vendor/jquery.jsonview.min.js',
+    './client/index.css',
+    './client/index.js'
   ],
   output: {
     filename: './dist/bundle.js'
@@ -21,15 +24,27 @@ module.exports = {
           plugins: ['transform-object-assign']
         }
       },
+      // 加载外部公共样式
       {
         test: /\.css$/,
-        loader: 'style-loader!css-loader'
+        exclude: /client\/components/,
+        loader: 'style!css'
+      },
+      // 加载前端组件的css
+      {
+        test: /\.css$/,
+        include: /client\/components/,
+        loaders: [
+          'style-loader',
+          'css-loader?modules&sourceMap&importLoaders=1&localIdentName=[local]___[hash:base64:5]',
+        ]
       }
     ]
   },
   plugins: [
     new webpack.ProvidePlugin({
       $: 'jquery',
+      jQuery: 'jquery',
       React: 'react',
       ReactDOM: 'react-dom',
       QRCode: path.resolve('./client/vendor/qrcode.js')    // 注意，这个包改了源码了，注释掉了284到301行，因为直接使用会报错

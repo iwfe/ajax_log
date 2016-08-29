@@ -1,0 +1,27 @@
+* {
+  box-sizing: border-box;
+}
+html,
+body,
+#root,
+.left-right-wrap {
+  height: 100%;
+}
+.left-right-wrap {
+  display: flex;
+}
+.left {
+  width: 500px;
+}
+.right {
+  flex: 1;
+  background-color: #f5f7fa;
+}
+
+.record-list-head {
+  height: 75px;
+}
+.record-list-body {
+  height: calc(100% - 75px);
+  overflow: auto;
+}
