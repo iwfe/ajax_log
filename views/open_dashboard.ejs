@@ -7,6 +7,7 @@
     <link rel="icon" href="data:;base64,iVBORw0KGgo=">
   </head>
   <body>
+    <h4>加载中，请稍候...</h4>
     <script src="http://cdn.bootcss.com/socket.io/1.4.5/socket.io.min.js"></script>
     <script>
       var socket = io()
@@ -15,8 +16,10 @@
         dashboard_page_id: '<%= dashboard_page_id %>',
         mobile_ip: '<%= mobile_ip %>'
       })
-      document.write('<h2>抓包面板已经打开，如果该页面没有自动关闭，请手动关闭！</h2>')
-      window.close()
+      socket.on('close-mobile-page', function() {
+        document.write('<h2>抓包面板已经打开，如果该页面没有自动关闭，请手动关闭！</h2>')
+        window.close()
+      })
     </script>
   </body>
 </html>

@@ -23,11 +23,19 @@ module.exports = {
         } else if (socketMapping[data.mobile_ip].indexOf(socketKey) === -1) {
           socketMapping[data.mobile_ip].push(socketKey)
         }
+        // send for dashboard page
         this.sendToClient('go-dashboard', data.mobile_ip, data.mobile_ip)
+        // send for mobile page
+        io.to(socket.id).emit('close-mobile-page')
       })
 
       socket.on('disconnect', () => {
-
+        for (let key in socketMapping) {
+          const index = socketMapping[key].indexOf(socket.id)
+          if (index > -1) {
+            socketMapping[key].splice(index, 1)
+          }
+        }
       })
     })
   },
