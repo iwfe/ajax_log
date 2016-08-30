@@ -2,7 +2,7 @@ import config from '../config/config'
 
 module.exports = {
   init(server) {
-    const io = require('socket.io')(server)
+    const io = require('socket.io')(server, { path: '/socket' })
     const socketMapping = {}
     // 把这两个挂到 this 上
     this.io = io
