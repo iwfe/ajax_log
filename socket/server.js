@@ -11,7 +11,7 @@ module.exports = {
     io.on('connection', socket => {
       // for create qrcode
       socket.on('get-socket-id', () => {
-        const dashboardUrl = `${config.host}:${config.port}/open_dashboard?dashboard_page_id=${socket.id.substr(2, socket.id.length - 2)}`
+        const dashboardUrl = `${config.host}:${config.nginxPort}/open_dashboard?dashboard_page_id=${socket.id.substr(2, socket.id.length - 2)}`
         io.to(socket.id).emit('dashboard-page-id', dashboardUrl)
       })
 
