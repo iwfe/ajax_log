@@ -10,12 +10,7 @@ import Dashboard from '../components/Dashboard'
 class App extends React.Component {
   render() {
     const { socket, dashboard, actions } = this.props
-    const page = dashboard.mobile_ip ? (
-      <Dashboard socket={socket} dashboard={dashboard} actions={actions} />
-    ) : (
-      <QrCode socket={socket} dashboard={dashboard} actions={actions} />
-    )
-    return page
+    return <Dashboard socket={socket} dashboard={dashboard} actions={actions} />
   }
 }
 

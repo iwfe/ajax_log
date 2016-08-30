@@ -1,0 +1,11 @@
+.detail > div {
+  padding: 0 15px;
+}
+.detail h4 {
+  margin: 25px 0 10px;
+  padding: 8px 15px;
+  background-color: #eee;
+}
+.detail h4:first-child {
+  margin-top: 0;
+}

@@ -1,6 +1,10 @@
 .item_wrap {
   display: flex;
   border-bottom: 1px solid #eee;
+  cursor: pointer;
+}
+.item_wrap:hover {
+  background-color: #fafafa;
 }
 .item_wrap.active {
   background-color: #f5f7fa;

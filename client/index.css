@@ -11,10 +11,11 @@ body,
   display: flex;
 }
 .left {
-  width: 500px;
+  width: 600px;
 }
 .right {
   flex: 1;
+  overflow: auto;
   background-color: #f5f7fa;
 }
 

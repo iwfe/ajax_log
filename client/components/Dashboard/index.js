@@ -1,5 +1,6 @@
 import RecordHeader from '../RecordHeader'
 import RecordList from '../RecordList'
+import RecordDetail from '../RecordDetail'
 
 class Dashboard extends React.Component {
   componentDidMount() {
@@ -17,7 +18,7 @@ class Dashboard extends React.Component {
   }
 
   render() {
-    const { dashboard, actions } = this.props
+    const { dashboard, actions, socket } = this.props
     return (
       <div className="left-right-wrap">
         <div className="left">
@@ -29,6 +30,7 @@ class Dashboard extends React.Component {
           </div>
         </div>
         <div className="right">
+          <RecordDetail dashboard={dashboard} actions={actions} socket={socket} />
         </div>
 
       </div>

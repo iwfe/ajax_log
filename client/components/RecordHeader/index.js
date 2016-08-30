@@ -12,8 +12,8 @@ class Header extends React.Component {
     return (
       <div className={style.head}>
         <div className={style.control}>
-          <button className="pure-button pure-button-primary" onClick={() => this.handleClearAll}>清除</button>
-          <input type="text" placeholder="搜索..." />
+          <button className="pure-button pure-button-primary" onClick={() => this.handleClearAll()}>清 除</button>
+          <input type="text" placeholder="筛选..." />
         </div>
         <div className={style.row_title}>
           <div>url</div>
