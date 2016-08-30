@@ -10,7 +10,7 @@ class QrCode extends React.Component {
       if (!document.getElementById('qrcode')) {
         return
       }
-      console.log(data)
+      // console.log(data)
       document.getElementById('qrcode').innerHTML = ''
       new QRCode(document.getElementById('qrcode'), {
         text: data,
