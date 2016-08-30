@@ -12,7 +12,17 @@
 .control button {
   width: 100px;
   height: 30px;
+  border-radius: 3px;
+  background-color: #42afe3;
+  border-color: transparent;
+  color: white;
   font-size: .75em;
+  cursor: pointer;
+}
+.control button:hover,
+.control button:focus {
+  background-color: #1f99d3;
+  outline: 0;
 }
 .control input {
   float: right;

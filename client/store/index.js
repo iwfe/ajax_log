@@ -1,16 +1,14 @@
 import { createStore, applyMiddleware } from 'redux'
 
-import { logger } from '../middleware'
+import createLogger from 'redux-logger';
 import rootReducer from '../reducers'
 
-export default function configureStore(initialState) {
-  const create = window.devToolsExtension
-    ? window.devToolsExtension()(createStore)
-    : createStore
+const logger = createLogger()
 
-  const createStoreWithMiddleware = applyMiddleware(
-    logger
-  )(create)
+export default function configureStore(initialState) {
+  const createStoreWithMiddleware = process.env.NODE_ENV === 'development'
+    ? applyMiddleware(logger)(createStore)
+    : createStore
 
   const store = createStoreWithMiddleware(rootReducer, initialState)
 

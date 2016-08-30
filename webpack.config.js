@@ -4,7 +4,7 @@ var WebpackNotifierPlugin = require('webpack-notifier')
 
 module.exports = {
   entry: [
-    'purecss',
+    'normalize.css',
     './client/vendor/jquery.jsonview.min.css',
     './client/vendor/jquery.jsonview.min.js',
     './client/index.css',
