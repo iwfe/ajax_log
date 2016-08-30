@@ -6,6 +6,10 @@ class Header extends React.Component {
     this.props.actions.clearAll()
   }
 
+  handleChangeFilter() {
+    this.props.actions.changeFilter(this.refs.filterTextInput.value)
+  }
+
   render() {
     const { dashboard } = this.props
 
@@ -13,7 +17,11 @@ class Header extends React.Component {
       <div className={style.head}>
         <div className={style.control}>
           <button className="pure-button pure-button-primary" onClick={() => this.handleClearAll()}>清 除</button>
-          <input type="text" placeholder="筛选..." />
+          <input type="text"
+                 placeholder="筛选..."
+                 value={dashboard.filterText}
+                 ref="filterTextInput"
+                 onChange={() => this.handleChangeFilter()} />
         </div>
         <div className={style.row_title}>
           <div>url</div>

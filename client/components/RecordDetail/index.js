@@ -1,10 +1,24 @@
+import { filter } from 'lodash'
 import QrCode from '../QrCode'
 import style from './style.css'
 
 class RecordDetail extends React.Component {
+  getFilterRecords() {
+    const { records, filterText } = this.props.dashboard
+    let filterRecords = records
+    if (filterText) {
+      filterRecords = filter(records, item => {
+        if (item.url.toLowerCase().indexOf(filterText.toLowerCase()) > -1) {
+          return item
+        }
+      })
+    }
+    return filterRecords
+  }
+
   setJSONView() {
     const { dashboard, actions, socket } = this.props
-    const currentRecord = dashboard.records[dashboard.currentRecordIndex]
+    const currentRecord = this.getFilterRecords()[dashboard.currentRecordIndex]
     if (currentRecord) {
       $('#req_data_' + currentRecord.id).JSONView(currentRecord.req_data)
       $('#res_data_' + currentRecord.id).JSONView(currentRecord.res_data)
@@ -21,7 +35,7 @@ class RecordDetail extends React.Component {
 
   render() {
     const { dashboard, actions, socket } = this.props
-    const currentRecord = dashboard.records[dashboard.currentRecordIndex]
+    const currentRecord = this.getFilterRecords()[dashboard.currentRecordIndex]
     let detailContent = null
     if (!dashboard.mobile_ip) {
       detailContent = (

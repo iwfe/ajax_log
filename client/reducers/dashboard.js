@@ -3,8 +3,8 @@ import { findIndex } from 'lodash'
 
 const initialState = {
   mobile_ip: '',
-  recording: false,
   currentRecordIndex: 0,
+  filterText: '',
   records: [
     // {
     //   id: 123,
@@ -41,6 +41,9 @@ export default handleActions({
   },
   'change current record' (state, action) {
     return Object.assign({}, state, { currentRecordIndex: action.payload })
+  },
+  'change filter' (state, action) {
+    return Object.assign({}, state, { filterText: action.payload, currentRecordIndex: 0 })
   },
   'clear all' (state, action) {
     return Object.assign({}, state, { records: [], currentRecordIndex: 0 })
