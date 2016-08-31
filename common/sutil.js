@@ -6,7 +6,7 @@ module.exports = {
 
   allowCORS(ctx) {
     ctx.set('Access-Control-Allow-Origin', '*')
-    ctx.set('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
-    ctx.set('Access-Control-Allow-Headers', 'X-Requested-With')
+    ctx.set('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS')
+    ctx.set('Access-Control-Allow-Headers', 'Content-Type,accept,X-Requested-With')
   }
 }
