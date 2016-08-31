@@ -41,10 +41,10 @@ module.exports = {
   },
 
   sendToClient(eventType, to, data) {
-    console.log(this.socketMapping);
+    // console.log(this.socketMapping);
     if (this.socketMapping[to]) {
       this.socketMapping[to].forEach(item => {
-        console.log(item);
+        // console.log(item);
         this.io.to(item).emit(eventType, data)
       })
     }

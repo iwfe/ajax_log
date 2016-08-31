@@ -20,8 +20,8 @@ class RecordDetail extends React.Component {
     const { dashboard, actions, socket } = this.props
     const currentRecord = this.getFilterRecords()[dashboard.currentRecordIndex]
     if (currentRecord) {
-      $('#req_data_' + currentRecord.id).JSONView(currentRecord.req_data)
-      $('#res_data_' + currentRecord.id).JSONView(currentRecord.res_data)
+      $('#req_data_' + currentRecord.id).JSONView(currentRecord.req_data || {})
+      $('#res_data_' + currentRecord.id).JSONView(currentRecord.res_data || {})
     }
   }
 
