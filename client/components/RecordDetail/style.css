@@ -9,3 +9,10 @@
 .detail h4:first-child {
   margin-top: 0;
 }
+.detail h4 > a {
+  float: right;
+  line-height: 18px;
+  font-size: .9em;
+  font-weight: normal;
+  text-decoration: none;
+}

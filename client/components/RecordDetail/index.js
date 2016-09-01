@@ -48,7 +48,12 @@ class RecordDetail extends React.Component {
     } else {
       detailContent = (
         <div className={style.detail}>
-          <h4>URL:</h4>
+          <h4>URL:
+            <a href={`http://fe.superjia.com:8888/api/detail_preview?method=${currentRecord.method}&url=${currentRecord.url}`}
+               target="_blank">
+               查看API文档
+            </a>
+          </h4>
           <div>{currentRecord.url}</div>
           <h4>Request Data:</h4>
           <div id={'req_data_' + currentRecord.id}></div>
